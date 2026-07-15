@@ -30,21 +30,32 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_25
+        targetCompatibility JavaVersion.VERSION_25
     }
     testOptions {
         unitTests.returnDefaultValues = true
+        unitTests.all {
+            useJUnitPlatform()
+        }
     }
     namespace 'edu.luc.etl.cs313.android.shapes.android'
 }
 
 dependencies {
     implementation 'com.android.support:support-annotations:28.0.0'
-    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:6.1.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testImplementation 'org.mockito:mockito-core:5.23.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.23.0'
     testImplementation 'org.objenesis:objenesis:3.5'
     testImplementation 'org.mockito:mockito-inline:5.2.0'
+}
+
+tasks.withType(Test).configureEach {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
 
 tasks.register('javadoc', Javadoc) {

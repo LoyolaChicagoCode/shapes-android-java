@@ -1,10 +1,10 @@
 package edu.luc.etl.cs313.android.shapes.model;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static edu.luc.etl.cs313.android.shapes.model.Fixtures.*;
 
@@ -12,12 +12,12 @@ public class TestCount {
 
     protected Count v;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         v = new Count();
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         v = null;
     }
@@ -54,7 +54,7 @@ public class TestCount {
 
     @Test
     public void testGroupMiddle() {
-        assertEquals(3, middleGroup.accept(v).intValue()); 
+        assertEquals(3, middleGroup.accept(v).intValue());
     }
 
     @Test

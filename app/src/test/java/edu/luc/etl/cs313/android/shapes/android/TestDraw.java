@@ -2,13 +2,13 @@ package edu.luc.etl.cs313.android.shapes.android;
 
 import static org.mockito.Mockito.*;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InOrder;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import android.graphics.*;
 import android.graphics.Paint.Style;
@@ -22,7 +22,7 @@ import android.graphics.Paint.Style;
 import edu.luc.etl.cs313.android.shapes.model.Fixtures;
 import edu.luc.etl.cs313.android.shapes.model.Visitor;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class TestDraw {
 
     @Mock private Canvas canvas;
@@ -31,13 +31,13 @@ public class TestDraw {
 
     private Visitor<Void> draw;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         inOrder = inOrder(canvas, paint);
         draw = new Draw(canvas, paint);
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         draw = null;
         inOrder = null;
